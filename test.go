@@ -25,13 +25,14 @@ var albums = []album{
 
 func main() {
 	var test_env = os.Getenv("TEST_ENV")
+	var port = os.Getenv("PORT")
 	print("TEST_ENV: ", test_env, "\n")
 	router := gin.Default()
 	router.GET("/albums", getAlbums)
 	router.GET("/albums/:id", getAlbumByID)
 	router.POST("/albums", postAlbums)
 
-	router.Run("localhost:8080")
+	router.Run("localhost:"+port)
 }
 
 // getAlbums responds with the list of all albums as JSON.
